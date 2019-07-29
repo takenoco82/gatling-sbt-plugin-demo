@@ -1,11 +1,11 @@
 build:
-	docker build -t gatling:3.0.3-sbt
+	docker build -t gatling:3.0.3-sbt .
 
-run: build
+test: build
 	docker run -it --rm \
-		gatling:3.0.3-sbt
+		gatling:3.0.3-sbt gatling:test
 
-run: sbt
+# TODO ホントはパラメータ化したい
+testOnly: build
 	docker run -it --rm \
-		-v ${PWD}/conf:/opt/gatling/conf \
-		gatling:3.0.3-sbt
+		gatling:3.0.3-sbt "gatling:testOnly computerdatabase.SampleSimulation"
