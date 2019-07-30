@@ -1,4 +1,4 @@
-FROM denvazh/gatling:3.0.3
+FROM denvazh/gatling:3.0.3 AS base
 
 ARG GATLING_DIR=/opt/gatling
 WORKDIR ${GATLING_DIR}
@@ -17,12 +17,13 @@ RUN wget https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_
     && sbt sbtVersion \
     && rm -f sbt-${SBT_VERSION}.tgz
 
+RUN mkdir sbt-project
+WORKDIR ${GATLING_DIR}/sbt-project
+
+
+FROM base as self-contained
 # source transfer
-RUN mkdir gatling-sbt-plugin-demo
-WORKDIR ${GATLING_DIR}/gatling-sbt-plugin-demo
-COPY project ./project/
-COPY src ./src/
-COPY build.sbt ./
+COPY sbt-project ./
 
 # compile
 RUN sbt compile
