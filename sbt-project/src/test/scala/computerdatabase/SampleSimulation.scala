@@ -20,7 +20,12 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
+import com.typesafe.scalalogging.Logger
+import org.slf4j.LoggerFactory
+
 class SampleSimulation extends Simulation {
+  val logger = Logger(LoggerFactory.getLogger(this.getClass))
+  logger.debug("log test")
   val httpProtocol = http
     .baseUrl("http://weather.livedoor.com") // Here is the root for all relative URLs
     .acceptHeader("application/json") // Here are the common headers
