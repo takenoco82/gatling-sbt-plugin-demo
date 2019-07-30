@@ -26,6 +26,12 @@ import org.slf4j.LoggerFactory
 class SampleSimulation extends Simulation {
   val logger = Logger(LoggerFactory.getLogger(this.getClass))
   logger.debug("log test")
+  // システムプロパティ
+  logger.info(Option(System.getProperty("java.version")).getOrElse("java.version.defaults"))
+  // 環境変数
+  logger.info(Option(System.getenv("GATLING_VERSION")).getOrElse("GATLING_VERSION.defaults"))
+  logger.info(Option(System.getenv("ENV_AHA")).getOrElse("ENV_AHA.defaults"))
+
   val httpProtocol = http
     .baseUrl("http://weather.livedoor.com") // Here is the root for all relative URLs
     .acceptHeader("application/json") // Here are the common headers
