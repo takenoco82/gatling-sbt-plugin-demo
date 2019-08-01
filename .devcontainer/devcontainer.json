@@ -1,0 +1,17 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	// A display name for the container.
+	"name": "Remote Container Gatling",
+	// Required. An ordered list of paths to Docker Compose files relative to the devcontainer.json file.
+	"dockerComposeFile": "docker-compose.yml",
+	// Required. The name of the service VS Code should connect to once running.
+	"service": "gatling",
+	"workspaceFolder": "/opt/gatling/workspace",
+	"extensions": [
+		"eamodio.gitlens"
+	],
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/zsh"
+	},
+	"postCreateCommand": "sh scripts/install-dev-tools.sh"
+}

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  gatling:
+    image: gatling:3.0.3-sbt-dev
+    environment:
+      ENV_AHA: aha
+    volumes:
+      - ./..:/opt/gatling/workspace
+    command: /bin/sh -c "while sleep 1000; do :; done"
