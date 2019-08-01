@@ -5,7 +5,7 @@ build:
 	docker build -t ${GATLING_SBT_IMAGE} .
 
 build_dev:
-	docker build --target base -t ${GATLING_SBT_IMAGE}-dev .
+	docker build --target development -t ${GATLING_SBT_IMAGE}-dev .
 
 test: build
 	docker run -it --rm \
