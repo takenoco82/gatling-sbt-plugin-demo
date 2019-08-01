@@ -18,6 +18,7 @@ RUN wget https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_
     && rm -f sbt-${SBT_VERSION}.tgz
 
 RUN mkdir sbt-project
+RUN mkdir -p sbt-project/logs
 WORKDIR ${GATLING_DIR}/sbt-project
 
 

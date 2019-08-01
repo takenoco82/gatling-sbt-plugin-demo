@@ -1,2 +1,4 @@
 sbt-project/target
 sbt-project/project/target
+
+sbt-project/logs

@@ -8,14 +8,26 @@
 		<immediateFlush>false</immediateFlush>
 	</appender>
 
+	<!-- ファイル出力用の設定 -->
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<encoder>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+		</encoder>
+	</appender>
+
 	<!-- uncomment and set to DEBUG to log all failing HTTP requests -->
 	<!-- uncomment and set to TRACE to log all HTTP requests -->
 	<!--<logger name="io.gatling.http.engine.response" level="TRACE" />-->
-	<!-- computerdatabaseから出力されたログはDEBUGレベルから出力 -->
-	<logger name="computerdatabase" level="DEBUG" />
+
+	<!-- computerdatabaseから出力されたログはDEBUGレベルからファイルに出力 -->
+	<!-- [第3章 logbackの設定](https://logback.qos.ch/manual/configuration_ja.html) -->
+	<logger name="computerdatabase" level="DEBUG" additivity="false">
+		<appender-ref ref="FILE" />
+	</logger>
 
 	<root level="WARN">
 		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
 	</root>
 
 </configuration>
