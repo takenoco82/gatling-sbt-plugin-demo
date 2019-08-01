@@ -21,6 +21,12 @@ RUN mkdir sbt-project
 WORKDIR ${GATLING_DIR}/sbt-project
 
 
+FROM base as development
+# docker - How to remove entrypoint from parent Image on Dockerfile - Stack Overflow
+# https://stackoverflow.com/questions/40122152/how-to-remove-entrypoint-from-parent-image-on-dockerfile
+ENTRYPOINT []
+
+
 FROM base as self-contained
 # source transfer
 COPY sbt-project ./
