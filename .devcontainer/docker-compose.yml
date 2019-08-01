@@ -7,4 +7,5 @@ services:
       ENV_AHA: aha
     volumes:
       - ./..:/opt/gatling/workspace
+      - ~:/root/localhost_home:ro
     command: /bin/sh -c "while sleep 1000; do :; done"
